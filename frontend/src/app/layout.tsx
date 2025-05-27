@@ -34,7 +34,7 @@ export default function RootLayout({
           <aside className="w-60 p-6 border-r border-muted flex flex-col justify-between">
   {/* Top section: title + nav */}
   <div>
-    <h2 className="text-2xl font-bold mb-8">CryptoBot</h2>
+    <h2 className="text-2xl font-bold mb-8">SlimeBot</h2>
     <nav className="flex flex-col space-y-2">
   <Link
     href="/"

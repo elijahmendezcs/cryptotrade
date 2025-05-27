@@ -21,7 +21,7 @@ export default function DashboardPage() {
     <main className="p-6 space-y-6">
       {/* Header */}
       <header className="flex items-center justify-between">
-        <h1 className="text-3xl font-semibold">Trading Bot Dashboard</h1>
+        <h1 className="text-3xl font-semibold">Slime Bot Dashboard</h1>
         <div className="flex items-center space-x-2">
           <StatusIndicator status="running" />
           <Button variant="outline">Start Bot</Button>
