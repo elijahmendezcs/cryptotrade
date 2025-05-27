@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
-import { Home, List, BarChart2, Settings } from "lucide-react";
+import { Home, List, BarChart2, Settings, TriangleAlert } from "lucide-react";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -36,31 +36,38 @@ export default function RootLayout({
   <div>
     <h2 className="text-2xl font-bold mb-8">CryptoBot</h2>
     <nav className="flex flex-col space-y-2">
-      <Link
-        href="/"
-        className="flex items-center px-3 py-2 rounded hover:bg-accent"
-      >
-        <Home className="mr-2 h-5 w-5" /> Dashboard
-      </Link>
-      <Link
-        href="/strategies"
-        className="flex items-center px-3 py-2 rounded hover:bg-accent"
-      >
-        <List className="mr-2 h-5 w-5" /> Strategies
-      </Link>
-      <Link
-        href="/backtest"
-        className="flex items-center px-3 py-2 rounded hover:bg-accent"
-      >
-        <BarChart2 className="mr-2 h-5 w-5" /> Backtest
-      </Link>
-      <Link
-        href="/settings"
-        className="flex items-center px-3 py-2 rounded hover:bg-accent"
-      >
-        <Settings className="mr-2 h-5 w-5" /> Settings
-      </Link>
-    </nav>
+  <Link
+    href="/"
+    className="flex items-center px-3 py-2 rounded hover:bg-accent"
+  >
+    <Home className="mr-2 h-5 w-5" /> Dashboard
+  </Link>
+  <Link
+    href="/strategies"
+    className="flex items-center px-3 py-2 rounded hover:bg-accent"
+  >
+    <List className="mr-2 h-5 w-5" /> Strategies
+  </Link>
+  <Link
+    href="/backtest"
+    className="flex items-center px-3 py-2 rounded hover:bg-accent"
+  >
+    <BarChart2 className="mr-2 h-5 w-5" /> Backtest
+  </Link>
+  <Link
+    href="/manual-override"
+    className="flex items-center px-3 py-2 rounded hover:bg-accent"
+  >
+    <TriangleAlert className="mr-2 h-5 w-5"/> Manual Override
+  </Link>
+  <Link
+    href="/settings"
+    className="flex items-center px-3 py-2 rounded hover:bg-accent"
+  >
+    <Settings className="mr-2 h-5 w-5" /> Settings
+  </Link>
+</nav>
+
   </div>
 
   {/* Bottom section: Help/About */}
