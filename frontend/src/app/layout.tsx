@@ -1,5 +1,4 @@
 // frontend/src/app/layout.tsx
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
@@ -19,10 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    // ← add `className="dark"` here to turn on dark mode by default
+    <html lang="en" className="dark">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="min-h-screen flex bg-background text-foreground">
           {/* Sidebar */}
           <aside className="w-60 p-6 border-r border-muted flex flex-col">
