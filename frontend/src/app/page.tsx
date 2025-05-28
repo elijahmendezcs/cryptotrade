@@ -1,4 +1,7 @@
-// frontend/src/app/page.tsx
+/*
+File: frontend/src/app/page.tsx
+*/
+
 import {
   Card,
   CardHeader,
@@ -21,7 +24,10 @@ export default function DashboardPage() {
     <main className="p-6 space-y-6">
       {/* Header */}
       <header className="flex items-center justify-between">
-        <h1 className="text-3xl font-semibold">Slime Bot Dashboard</h1>
+        {/* Keep dashboard title white by omitting the muted class */}
+        <h1 className="text-3xl font-semibold">
+          Slime Bot Dashboard
+        </h1>
         <div className="flex items-center space-x-2">
           <StatusIndicator status="running" />
           <Button variant="outline">Start Bot</Button>

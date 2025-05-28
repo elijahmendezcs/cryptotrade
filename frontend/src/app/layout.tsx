@@ -1,6 +1,3 @@
-// frontend/src/app/layout.tsx
-
-// THIS IS WHERE THE ROUTING HAPPENS
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
@@ -66,12 +63,6 @@ export default function RootLayout({
   >
     <Settings className="mr-2 h-5 w-5" /> Settings
   </Link>
-  <Link
-    href="/login"
-    className="flex items-center px-3 py-2 rounded hover:bg-accent"
-  >
-  </Link>
-
 </nav>
 
   </div>
