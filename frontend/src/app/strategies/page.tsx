@@ -3,15 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import StrategyCard from '@/app/strategies/components/StrategyCard'
-
-export interface Strategy {
-  id: string;
-  name: string;
-  description: string;
-  parameters: Record<string, number | string>;
-  enabled: boolean;
-}
+import StrategyCard from './components/StrategyCard';
+import type { Strategy } from './types';
 
 export default function StrategiesPage() {
   const [strategies, setStrategies] = useState<Strategy[]>([]);

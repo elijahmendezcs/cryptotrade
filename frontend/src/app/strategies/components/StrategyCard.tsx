@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
-import { Strategy } from '../page';
+import type { Strategy } from '../types';
 
 interface StrategyCardProps {
   strategy: Strategy;
@@ -51,9 +51,7 @@ export default function StrategyCard({
       <CardFooter className="justify-end">
         <Switch
           checked={strategy.enabled}
-          onCheckedChange={(checked) =>
-            onToggle(strategy.id, checked)
-          }
+          onCheckedChange={(checked) => onToggle(strategy.id, checked)}
         />
       </CardFooter>
     </Card>
