@@ -41,7 +41,7 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     except JWTError:
         raise HTTPException(status_code=401, detail="Token decode error")
 
-# ✅ REGISTER
+# REGISTER
 @auth_router.post("/register")
 def register(username: str, password: str):
     result = register_user(username, password)
@@ -49,7 +49,7 @@ def register(username: str, password: str):
         return {"message": result}
     raise HTTPException(status_code=400, detail=result)
 
-# ✅ LOGIN (returns JWT)
+# LOGIN (returns JWT)
 @auth_router.post("/login", response_model=Token)
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
     success = login_user(form_data.username, form_data.password)
@@ -58,7 +58,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
     access_token = create_access_token(data={"sub": form_data.username})
     return {"access_token": access_token, "token_type": "bearer"}
 
-# ✅ PROTECTED ROUTE
+# PROTECTED ROUTE
 @auth_router.get("/protected")
 def protected_route(user=Depends(get_current_user)):
     return {"message": f"Hello {user['username']}, you're authenticated!"}

@@ -35,7 +35,6 @@ def login_user(username, password):
         return "✅ Login successful!"
     return "❌ Invalid username or password."
 
-# ✅ Add this new function here:
 def get_user_by_username(username):
     cursor.execute("SELECT username FROM users WHERE username = %s", (username,))
     result = cursor.fetchone()

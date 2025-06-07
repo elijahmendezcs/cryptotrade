@@ -5,7 +5,7 @@ from bot_controller import bot_router
 
 app = FastAPI()
 
-# Mount your routes
+# Mount routes
 app.include_router(auth_router, prefix="/auth")
 app.include_router(bot_router, prefix="/bot")
 
