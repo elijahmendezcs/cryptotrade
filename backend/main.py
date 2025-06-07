@@ -1,34 +1,14 @@
-#main
-from pandas.core.interchange.from_dataframe import primitive_column_to_ndarray
+# main.py
+from fastapi import FastAPI
+from auth import auth_router
+from bot_controller import bot_router
 
-from bot_controller import start_bot, stop_bot, pause_bot
-from bot_state import BotStatus
+app = FastAPI()
 
-def menu():
-    print("\n=== Almeda Bot Control ===")
-    print("1. Start Bot")
-    print("2. Pause Bot")
-    print("3. Stop Bot")
-    print("4. Status")
-    print("5. Exit")
+# Mount your routes
+app.include_router(auth_router, prefix="/auth")
+app.include_router(bot_router, prefix="/bot")
 
-def main():
-    while True:
-        menu()
-        choice = input("Enter your choice: ")
-        if choice == "1":
-            print(start_bot())
-        elif choice == "2":
-            print(pause_bot())
-        elif choice == "3":
-            print(stop_bot())
-        elif choice == "4":
-            print(f"Current State: {BotStatus.get_state().name}")
-        elif choice == "5":
-            print("Exiting...")
-            break
-        else:
-            print("Invalid choice.")
-
-if __name__ == "__main__":
-    main()
+@app.get("/")
+def home():
+    return {"message": "Welcome to Almeda Bot API"}

@@ -1,30 +1,27 @@
-# bot_controller
-from bot_state import BotState, BotStatus
-from utils.logger import logger
+# bot_controller.py
+from fastapi import APIRouter, Depends
+from auth import get_current_user
+from bot_state import BotStatus, BotState
 
-def start_bot():
+bot_router = APIRouter()
+
+@bot_router.post("/start")
+def start(user=Depends(get_current_user)):
     if BotStatus.get_state() != BotState.RUNNING:
         BotStatus.set_state(BotState.RUNNING)
-        logger.info("Bot started.")
-        return "Bot started."
-    logger.warning("Start called, but was laready running.")
-    return "Bot is already running."
+        return {"message": f"Bot started by {user['username']}"}
+    return {"message": "Bot already running."}
 
-def stop_bot():
-    if BotStatus.get_state() != BotState.STOPPED:
-        BotStatus.set_state(BotState.STOPPED)
-        logger.info("Bot stopped.")
-        return "Bot stopped."
-    logger.warning("Stop called, but was already stopped.")
-    return "Bot is already stopped."
-
-def pause_bot():
+@bot_router.post("/pause")
+def pause(user=Depends(get_current_user)):
     if BotStatus.get_state() == BotState.RUNNING:
         BotStatus.set_state(BotState.PAUSED)
-        logger.info("Bot paused.")
-        return "Bot paused."
-    elif BotStatus.get_state() == BotState.PAUSED:
-        logger.warning("Paused called, but was already paused.")
-        return "Bot is already paused."
-    logger.error("Pause attempted while bot was stopped.")
-    return "Cannot pause a stopped bot."
+        return {"message": "Bot paused."}
+    return {"message": "Bot not running or already paused."}
+
+@bot_router.post("/stop")
+def stop(user=Depends(get_current_user)):
+    if BotStatus.get_state() != BotState.STOPPED:
+        BotStatus.set_state(BotState.STOPPED)
+        return {"message": "Bot stopped."}
+    return {"message": "Bot already stopped."}
